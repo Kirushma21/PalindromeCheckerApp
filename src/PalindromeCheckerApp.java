@@ -7,19 +7,30 @@ public class PalindromeCheckerApp {
         System.out.println("     Palindrome Checker Application    ");
         System.out.println("=======================================");
 
-        // Take user input
+        // User input
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a word: ");
         String word = sc.nextLine();
 
-        // Reverse string
-        String reversed = "";
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed += word.charAt(i);
+        // Convert to char array (UC4)
+        char[] arr = word.toCharArray();
+
+        int start = 0;
+        int end = arr.length - 1;
+        boolean isPalindrome = true;
+
+        // Two-pointer check
+        while (start < end) {
+            if (arr[start] != arr[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // Check palindrome
-        if (word.equals(reversed)) {
+        // Output result
+        if (isPalindrome) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
             System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
